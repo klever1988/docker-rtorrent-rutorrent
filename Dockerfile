@@ -145,7 +145,7 @@ RUN make DESTDIR=${DIST_PATH} install -j$(nproc)
 RUN tree ${DIST_PATH}
 
 WORKDIR /tmp/rtorrent
-RUN autoreconf -fi
+RUN autoreconf -fiv
 RUN ./configure \
   --with-xmlrpc-c \
   --with-ncurses
