@@ -136,7 +136,7 @@ RUN make DESTDIR=${DIST_PATH} install -j$(nproc)
 RUN tree ${DIST_PATH}
 
 WORKDIR /tmp/libtorrent
-RUN ./autogen.sh
+RUN autoreconf -fi
 RUN ./configure \
   --with-posix-fallocate
 RUN make -j$(nproc)
