@@ -16,7 +16,7 @@ on:
       - '**.md'
 
 env:
-  DOCKERHUB_SLUG: crazymax/rtorrent-rutorrent
+  DOCKERHUB_SLUG: kleveralt/rtorrent
 
 jobs:
   build:
