@@ -42,7 +42,7 @@ RUN git clone "https://github.com/klever1988/libtorrent.git" .
 
 ARG RTORRENT_VERSION
 WORKDIR /dist/rtorrent
-RUN git clone --branch ${RTORRENT_VERSION} "https://github.com/rakshasa/rtorrent.git" . && git revert HEAD~1
+RUN git clone --branch ${RTORRENT_VERSION} "https://github.com/rakshasa/rtorrent.git" . && git reset --hard HEAD~1
 
 ARG MKTORRENT_VERSION
 WORKDIR /dist/mktorrent
