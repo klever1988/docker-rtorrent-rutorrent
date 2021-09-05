@@ -145,7 +145,8 @@ RUN make DESTDIR=${DIST_PATH} install -j$(nproc)
 RUN tree ${DIST_PATH}
 
 WORKDIR /tmp/rtorrent
-RUN autoreconf -fiv
+RUN git revert HEAD~1
+RUN ./autogen.sh
 RUN ./configure \
   --with-xmlrpc-c \
   --with-ncurses
