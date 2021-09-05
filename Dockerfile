@@ -42,7 +42,7 @@ RUN git clone "https://github.com/klever1988/libtorrent.git" .
 
 ARG RTORRENT_VERSION
 WORKDIR /dist/rtorrent
-RUN git clone --branch ${RTORRENT_VERSION} "https://github.com/rakshasa/rtorrent.git" .
+RUN git clone --branch ${RTORRENT_VERSION} "https://github.com/rakshasa/rtorrent.git" . && git revert HEAD~1
 
 ARG MKTORRENT_VERSION
 WORKDIR /dist/mktorrent
@@ -145,7 +145,6 @@ RUN make DESTDIR=${DIST_PATH} install -j$(nproc)
 RUN tree ${DIST_PATH}
 
 WORKDIR /tmp/rtorrent
-RUN git revert HEAD~1
 RUN ./autogen.sh
 RUN ./configure \
   --with-xmlrpc-c \
