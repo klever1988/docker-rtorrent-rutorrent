@@ -25,14 +25,14 @@ jobs:
       -
         name: Checkout
         uses: actions/checkout@v2
-      -
-        name: Cache Docker layers
-        uses: actions/cache@v2
-        with:
-          path: /tmp/.docker-cache
-          key: ${{ runner.os }}-docker-${{ github.sha }}
-          restore-keys: |
-            ${{ runner.os }}-docker-
+#       -
+#         name: Cache Docker layers
+#         uses: actions/cache@v2
+#         with:
+#           path: /tmp/.docker-cache
+#           key: ${{ runner.os }}-docker-${{ github.sha }}
+#           restore-keys: |
+#             ${{ runner.os }}-docker-
       -
         name: Docker meta
         id: meta
@@ -70,9 +70,10 @@ jobs:
             ${{ steps.meta.outputs.bake-file }}
           targets: image-all
           push: ${{ github.event_name != 'pull_request' }}
-          set: |
-            *.cache-from=type=local,src=/tmp/.docker-cache
-            *.cache-to=type=local,dest=/tmp/.docker-cache-new,mode=max
+          no-cache: true
+#           set: |
+#             *.cache-from=type=local,src=/tmp/.docker-cache
+#             *.cache-to=type=local,dest=/tmp/.docker-cache-new,mode=max
       -
         name: Check manifest
         if: github.event_name != 'pull_request'
