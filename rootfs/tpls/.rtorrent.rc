@@ -3,11 +3,11 @@ throttle.min_peers.normal.set = 1
 throttle.max_peers.normal.set = 100
 
 # Same as above but for seeding completed torrents (-1 = same as downloading)
-throttle.min_peers.seed.set = 1
-throttle.max_peers.seed.set = 50
+throttle.min_peers.seed.set = -1
+throttle.max_peers.seed.set = -1
 
 # Maximum number of simultanious uploads per torrent
-throttle.max_uploads.set = 15
+throttle.max_uploads.set = 50
 
 # Global upload and download rate in KiB. "0" for unlimited
 throttle.global_down.max_rate.set_kb = 0
@@ -23,7 +23,7 @@ protocol.pex.set = yes
 
 # Check hash for finished torrents. Might be usefull until the bug is
 # fixed that causes lack of diskspace not to be properly reported
-pieces.hash.on_completion.set = yes
+pieces.hash.on_completion.set = no
 
 # Set whether the client should try to connect to UDP trackers
 #trackers.use_udp.set = yes
