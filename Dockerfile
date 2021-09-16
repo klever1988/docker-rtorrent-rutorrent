@@ -38,7 +38,7 @@ RUN curl -sSL "https://curl.haxx.se/download/curl-${CURL_VERSION}.tar.gz" | tar 
 
 ARG LIBTORRENT_VERSION
 WORKDIR /dist/libtorrent
-RUN git clone "https://github.com/klever1988/libtorrent.git" .
+RUN git clone "https://github.com/klever1988/libtorrent.git" -b sec .
 
 ARG RTORRENT_VERSION
 WORKDIR /dist/rtorrent
