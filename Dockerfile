@@ -138,7 +138,8 @@ RUN tree ${DIST_PATH}
 WORKDIR /tmp/libtorrent
 RUN autoreconf -fi
 RUN ./configure \
-  --with-posix-fallocate
+  --with-posix-fallocate \
+  --enable-ipv6
 RUN make -j$(nproc)
 RUN make install -j$(nproc)
 RUN make DESTDIR=${DIST_PATH} install -j$(nproc)
