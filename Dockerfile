@@ -146,6 +146,7 @@ RUN make DESTDIR=${DIST_PATH} install -j$(nproc)
 RUN tree ${DIST_PATH}
 
 WORKDIR /tmp/rtorrent
+RUN aclocal -I m4
 RUN autoreconf -fi
 RUN ./configure \
   --with-xmlrpc-c \
