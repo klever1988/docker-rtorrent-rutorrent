@@ -1,5 +1,5 @@
 ARG ALPINE_S6_TAG=3.14-2.2.0.3
-ARG RTORRENT_VERSION=master
+ARG RTORRENT_VERSION=0.9.8
 ARG LIBTORRENT_VERSION=master
 ARG XMLRPC_VERSION=01.58.00
 ARG LIBSIG_VERSION=3.0.3
@@ -96,8 +96,7 @@ RUN apk --update --no-cache add \
     tar \
     tree \
     xz \
-    zlib-dev \
-    cmake
+    zlib-dev
 
 ENV DIST_PATH="/dist"
 COPY --from=download /dist /tmp
@@ -147,7 +146,6 @@ RUN make DESTDIR=${DIST_PATH} install -j$(nproc)
 RUN tree ${DIST_PATH}
 
 WORKDIR /tmp/rtorrent
-RUN cmake .
 RUN ./configure \
   --with-xmlrpc-c \
   --with-ncurses \
