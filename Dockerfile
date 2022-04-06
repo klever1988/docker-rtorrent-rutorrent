@@ -148,7 +148,8 @@ WORKDIR /tmp/rtorrent
 RUN ./autogen.sh
 RUN ./configure \
   --with-xmlrpc-c \
-  --with-ncurses
+  --with-ncurses \
+  --enable-ipv6
 RUN make -j$(nproc)
 RUN make install -j$(nproc)
 RUN make DESTDIR=${DIST_PATH} install -j$(nproc)
