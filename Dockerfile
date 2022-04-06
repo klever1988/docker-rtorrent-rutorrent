@@ -137,7 +137,6 @@ RUN tree ${DIST_PATH}
 
 WORKDIR /tmp/libtorrent
 RUN autoreconf -fi
-RUN ./autogen.sh
 RUN ./configure \
   --with-posix-fallocate \
   --enable-ipv6
