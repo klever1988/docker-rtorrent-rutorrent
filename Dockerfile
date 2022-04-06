@@ -146,7 +146,7 @@ RUN make DESTDIR=${DIST_PATH} install -j$(nproc)
 RUN tree ${DIST_PATH}
 
 WORKDIR /tmp/rtorrent
-RUN ./autogen.sh
+#RUN ./autogen.sh
 RUN ./configure \
   --with-xmlrpc-c \
   --with-ncurses \
