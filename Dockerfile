@@ -1,5 +1,5 @@
 ARG ALPINE_S6_TAG=3.14-2.2.0.3
-ARG RTORRENT_VERSION=master
+ARG RTORRENT_VERSION=0.9.8
 ARG LIBTORRENT_VERSION=master
 ARG XMLRPC_VERSION=01.58.00
 ARG LIBSIG_VERSION=3.0.3
@@ -146,8 +146,7 @@ RUN make DESTDIR=${DIST_PATH} install -j$(nproc)
 RUN tree ${DIST_PATH}
 
 WORKDIR /tmp/rtorrent
-RUN aclocal -I m4
-RUN autoreconf -fi
+RUN ./autogen.sh
 RUN ./configure \
   --with-xmlrpc-c \
   --with-ncurses \
