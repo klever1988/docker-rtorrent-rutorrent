@@ -1,5 +1,5 @@
 ARG ALPINE_S6_TAG=3.14-2.2.0.3
-ARG RTORRENT_VERSION=0.9.8
+ARG RTORRENT_VERSION=master
 ARG LIBTORRENT_VERSION=master
 ARG XMLRPC_VERSION=01.58.00
 ARG LIBSIG_VERSION=3.0.3
@@ -42,7 +42,7 @@ RUN git clone "https://github.com/klever1988/libtorrent.git" -b sec .
 
 ARG RTORRENT_VERSION
 WORKDIR /dist/rtorrent
-RUN git clone --branch v${RTORRENT_VERSION} "https://github.com/rakshasa/rtorrent.git" .
+RUN git clone --branch ${RTORRENT_VERSION} "https://github.com/rakshasa/rtorrent.git" .
 
 ARG MKTORRENT_VERSION
 WORKDIR /dist/mktorrent
