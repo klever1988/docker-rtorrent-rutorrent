@@ -137,6 +137,7 @@ RUN tree ${DIST_PATH}
 
 WORKDIR /tmp/libtorrent
 RUN autoreconf -fi
+RUN ./autogen.sh
 RUN ./configure \
   --with-posix-fallocate \
   --enable-ipv6
@@ -146,6 +147,7 @@ RUN make DESTDIR=${DIST_PATH} install -j$(nproc)
 RUN tree ${DIST_PATH}
 
 WORKDIR /tmp/rtorrent
+RUN autoreconf -fi
 RUN ./configure \
   --with-xmlrpc-c \
   --with-ncurses \
