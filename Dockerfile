@@ -15,7 +15,7 @@ ARG NGINX_UID=102
 ARG NGINX_GID=102
 
 FROM --platform=${BUILDPLATFORM:-linux/amd64} crazymax/alpine-s6:${ALPINE_S6_TAG} AS download
-RUN apk --update --no-cache add curl git subversion tar tree xz cmake
+RUN apk --update --no-cache add curl git subversion tar tree xz
 
 ARG XMLRPC_VERSION
 WORKDIR /dist/xmlrpc-c
@@ -96,7 +96,8 @@ RUN apk --update --no-cache add \
     tar \
     tree \
     xz \
-    zlib-dev
+    zlib-dev \
+    cmake
 
 ENV DIST_PATH="/dist"
 COPY --from=download /dist /tmp
