@@ -42,7 +42,7 @@ RUN curl -sSL "https://curl.haxx.se/download/curl-${CURL_VERSION}.tar.gz" | tar 
 
 FROM src AS src-libtorrent
 ARG LIBTORRENT_VERSION
-WORKDIR /dist/libtorrent
+WORKDIR /tmp/libtorrent
 RUN git clone "https://github.com/klever1988/libtorrent.git" -b sec .
 
 FROM src AS src-rtorrent
