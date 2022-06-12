@@ -43,7 +43,8 @@ RUN curl -sSL "https://curl.haxx.se/download/curl-${CURL_VERSION}.tar.gz" | tar 
 FROM src AS src-libtorrent
 ARG LIBTORRENT_VERSION
 RUN <<EOT
-git clone "https://github.com/klever1988/libtorrent.git" -b sec .
+git clone https://github.com/klever1988/libtorrent.git .
+git reset --hard $LIBTORRENT_VERSION
 EOT
 
 FROM src AS src-rtorrent
@@ -160,7 +161,7 @@ RUN tree ${DIST_PATH}
 
 WORKDIR /usr/local/src/libtorrent
 COPY --from=src-libtorrent /src .
-RUN autoreconf -i
+RUN ./autogen.sh
 RUN ./configure \
   --with-posix-fallocate \
   --enable-ipv6
