@@ -42,8 +42,9 @@ RUN curl -sSL "https://curl.haxx.se/download/curl-${CURL_VERSION}.tar.gz" | tar 
 
 FROM src AS src-libtorrent
 ARG LIBTORRENT_VERSION
-WORKDIR /tmp/libtorrent
-RUN git clone "https://github.com/klever1988/libtorrent.git" -b sec .
+RUN <<EOT
+git clone "https://github.com/klever1988/libtorrent.git" -b sec .
+EOT
 
 FROM src AS src-rtorrent
 ARG RTORRENT_VERSION
@@ -157,7 +158,8 @@ RUN make install -j$(nproc)
 RUN make DESTDIR=${DIST_PATH} install -j$(nproc)
 RUN tree ${DIST_PATH}
 
-WORKDIR /tmp/libtorrent
+WORKDIR /usr/local/src/libtorrent
+COPY --from=src-libtorrent /src .
 RUN autoreconf -i
 RUN ./configure \
   --with-posix-fallocate \
