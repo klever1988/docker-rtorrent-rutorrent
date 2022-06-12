@@ -1,5 +1,22 @@
 # Changelog
 
+## 3.10-0.9.8-0.13.8-r20 (2022/05/02)
+
+* Fix unrar not available since alpine 3.15 (#161)
+
+## 3.10-0.9.8-0.13.8-r19 (2022/04/29)
+
+* Fix GeoIP2 ruTorrent plugin version (#159)
+* Optimize Dockerfile (#157)
+
+## 3.10-0.9.8-0.13.8-r18 (2022/04/28)
+
+* Opt-in `WAN_IP` and add `WAN_IP_CMD` env var (#150 #153)
+* Check plugins existence (#155)
+* Option to disable Nginx access log (#154)
+* Alpine Linux 3.15 (#151)
+* Use GitHub Actions cache backend (#152)
+
 ## 3.10-0.9.8-0.13.8-r17 (2021/08/19)
 
 * Update dependencies (#117)
